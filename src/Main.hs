@@ -1,5 +1,8 @@
 module Main where
 
+import Data.Char
+import Data.List
+
 lucky :: Int -> String
 lucky 7 = "LUCKY NUMBER SEVEN!"
 lucky x = "Out of luck, pal!"
@@ -166,6 +169,30 @@ elem'' y ys = foldr (\x acc -> if x == y then True else acc) False ys
 maximum'' :: (Ord a) => [a] -> a
 maximum'' = foldl1 max
 
-result = sum' [1, 2, 3]
+reverse'' :: [a] -> [a]
+reverse'' = foldl (flip (:)) []
 
-main = print $ result
+product' :: (Num a) => [a] -> a
+product' = foldl1 (*)
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+
+numUniques :: (Eq a) => [a] -> Int
+numUniques = length . nub
+
+digitSum :: Int -> Int
+digitSum = sum . map digitToInt . show
+
+firstTo40 :: Maybe Int
+firstTo40 = find (\x -> digitSum x == 40) [1..]
+
+-- mapping data structure
+
+
+result = numUniques [1, 2, 3, 1]
+
+main = print result

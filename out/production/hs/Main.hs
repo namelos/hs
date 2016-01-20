@@ -1,5 +1,8 @@
 module Main where
 
+import Data.Char
+import Data.List
+
 lucky :: Int -> String
 lucky 7 = "LUCKY NUMBER SEVEN!"
 lucky x = "Out of luck, pal!"
@@ -157,6 +160,33 @@ filter' p (x:xs)
 sum' :: (Num a) => [a] -> a
 sum' = foldl (+) 0
 
-result = sum' [1, 2, 3]
+map'' :: (a -> b) -> [a] -> [b]
+map'' f xs = foldr (\x acc -> f x : acc) [] xs
 
-main = print $ result
+elem'' :: (Eq a) => a -> [a] -> Bool
+elem'' y ys = foldr (\x acc -> if x == y then True else acc) False ys
+
+maximum'' :: (Ord a) => [a] -> a
+maximum'' = foldl1 max
+
+reverse'' :: [a] -> [a]
+reverse'' = foldl (flip (:)) []
+
+product' :: (Num a) => [a] -> a
+product' = foldl1 (*)
+
+filter'' :: (a -> Bool) -> [a] -> [a]
+filter'' p = foldr (\x acc -> if p x then x : acc else acc) []
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x)
+
+numUniques :: (Eq a) => [a] -> Int
+numUniques = length . nub
+
+digitSum :: Int -> Int
+digitSum = sum . map digitToInt . show
+
+result = numUniques [1, 2, 3, 1]
+
+main = print result

@@ -16,11 +16,11 @@ version :: Version
 version = Version [1,0] []
 bindir, libdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/Users/namelos/Library/Haskell/bin"
-libdir     = "/Users/namelos/Library/Haskell/ghc-7.10.3-x86_64/lib/hs-1.0"
-datadir    = "/Users/namelos/Library/Haskell/share/ghc-7.10.3-x86_64/hs-1.0"
-libexecdir = "/Users/namelos/Library/Haskell/libexec"
-sysconfdir = "/Users/namelos/Library/Haskell/etc"
+bindir     = "/Users/Namelos/Library/Haskell/bin"
+libdir     = "/Users/Namelos/Library/Haskell/ghc-7.10.3-x86_64/lib/hs-1.0"
+datadir    = "/Users/Namelos/Library/Haskell/share/ghc-7.10.3-x86_64/hs-1.0"
+libexecdir = "/Users/Namelos/Library/Haskell/libexec"
+sysconfdir = "/Users/Namelos/Library/Haskell/etc"
 
 getBinDir, getLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "hs_bindir") (\_ -> return bindir)
